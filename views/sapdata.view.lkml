@@ -198,7 +198,7 @@ view: sapdata {
 
   dimension: net_revenue {
     type: string
-    sql: ${TABLE}.Net_Revenue ;;
+    sql: cast(${TABLE}.Net_Revenue as int) ;;
   }
 
   dimension: net_sales {
@@ -324,5 +324,11 @@ view: sapdata {
   measure: count {
     type: count
     drill_fields: []
+  }
+  measure: sum_of_net_revenue {
+    type: sum
+    sql: coalesce(${net_revenue},0) ;;
+    html: @{big_money_format} ;;
+
   }
 }
