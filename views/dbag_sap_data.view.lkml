@@ -158,7 +158,7 @@ view: dbag_sap_data {
 
   dimension: net_revenue {
     type: number
-    sql: ${TABLE}.Net_Revenue ;;
+    sql: cast(${TABLE}.Net_Revenue as int) ;;
   }
 
   dimension: net_sales {
@@ -261,6 +261,11 @@ view: dbag_sap_data {
     sql: ${TABLE}.Time ;;
   }
 
+  dimension: year_month {
+    type: string
+    sql: case when ${TABLE}.Time='Jan (2019)' then '2019-01' when ${TABLE}.Time='Feb (2019)' then '2019-02' when ${TABLE}.Time='Mar (2019)' then '2019-03' end ;;
+  }
+
   dimension: trade_spend {
     type: number
     sql: ${TABLE}.Trade_Spend ;;
@@ -289,5 +294,39 @@ view: dbag_sap_data {
   measure: count {
     type: count
     drill_fields: []
+  }
+
+  measure: sum_of_net_revenue {
+    type: sum
+    label: "Net Revenue"
+    sql: coalesce(${net_revenue},0) ;;
+    html: @{big_money_format} ;;
+  }
+
+  measure: sum_of_expenses {
+    type: sum
+    label: "Total Expenses"
+    sql: coalesce(${operating_expenses},0) ;;
+    html: @{big_money_format} ;;
+  }
+
+  measure: sum_of_contribution_margin {
+    type: sum
+    label: "Contribution margin"
+    sql: coalesce(${contribution_margin},0) ;;
+    html: @{big_money_format} ;;
+  }
+
+  measure: sum_of_net_profit_margin {
+    type: sum
+    label: "Net Profit margin"
+    sql: coalesce(${net_profit_margin},0) ;;
+    html: @{big_number_format} ;;
+  }
+
+  measure: total_ebit {
+    type: sum
+    sql: ${TABLE}.EBIT;;
+    html: @{big_money_format} ;;
   }
 }
