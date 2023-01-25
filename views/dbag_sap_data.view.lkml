@@ -318,10 +318,10 @@ view: dbag_sap_data {
   }
 
   measure: sum_of_net_profit_margin {
-    type: sum
+    type: average
     label: "Net Profit margin"
     sql: coalesce(${net_profit_margin},0) ;;
-    html: @{big_number_format} ;;
+    value_format_name: percent_2
   }
 
   measure: total_ebit {
