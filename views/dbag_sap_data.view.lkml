@@ -326,9 +326,9 @@ view: dbag_sap_data {
   }
 
 
-  measure: sum_of_net_gross_margin {
+  measure: sum_of_gross_margin {
     type: average
-    label: "Net Gross margin"
+    label: "Gross margin"
     sql: coalesce(${gross_profit_margin},0) ;;
     value_format_name: percent_2
   }
@@ -344,6 +344,13 @@ view: dbag_sap_data {
     type: sum
     label: "Net Profit"
     sql: coalesce(${net_profit},0) ;;
+    html: @{big_money_format} ;;
+  }
+
+  measure: sum_of_gross_profit {
+    type: sum
+    label: "Gross Profit"
+    sql: coalesce(${gross_profit},0) ;;
     html: @{big_money_format} ;;
   }
 }
