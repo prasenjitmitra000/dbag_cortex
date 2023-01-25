@@ -308,6 +308,7 @@ view: dbag_sap_data {
     label: "Total Expenses"
     sql: coalesce(${operating_expenses},0) ;;
     html: @{big_money_format} ;;
+    drill_fields: [business_area,country,plant,time,operating_expenses]
   }
 
   measure: sum_of_contribution_margin {
@@ -324,9 +325,25 @@ view: dbag_sap_data {
     value_format_name: percent_2
   }
 
+
+  measure: sum_of_net_gross_margin {
+    type: average
+    label: "Net Gross margin"
+    sql: coalesce(${gross_profit_margin},0) ;;
+    value_format_name: percent_2
+  }
+
   measure: total_ebit {
     type: sum
     sql: ${TABLE}.EBIT;;
+    html: @{big_money_format} ;;
+    drill_fields: [business_area,country,plant,time,ebit]
+  }
+
+  measure: sum_of_net_profit {
+    type: sum
+    label: "Net Profit"
+    sql: coalesce(${net_profit},0) ;;
     html: @{big_money_format} ;;
   }
 }
