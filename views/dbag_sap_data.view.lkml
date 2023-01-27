@@ -345,6 +345,7 @@ view: dbag_sap_data {
     label: "Net Profit"
     sql: coalesce(${net_profit},0) ;;
     html: @{big_money_format} ;;
+    drill_fields: [business_area,country,plant,time,net_profit]
   }
 
   measure: sum_of_gross_profit {
