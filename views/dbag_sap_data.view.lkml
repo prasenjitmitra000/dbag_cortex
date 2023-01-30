@@ -291,6 +291,22 @@ view: dbag_sap_data {
     sql: ${TABLE}.Volume_effect_part1 ;;
   }
 
+  dimension_group: date_time {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    datatype: datetime
+    sql: ${TABLE}.date_time ;;
+  }
+
+
   measure: count {
     type: count
     drill_fields: []
