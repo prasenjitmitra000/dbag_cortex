@@ -291,6 +291,27 @@ view: dbag_sap_data {
     sql: ${TABLE}.Volume_effect_part1 ;;
   }
 
+  dimension_group: date_time {
+    type: time
+    timeframes: [
+      raw,
+      time,
+      date,
+      week,
+      month,
+      quarter,
+      year
+    ]
+    datatype: datetime
+    sql: ${TABLE}.date_time ;;
+  }
+
+  dimension: primary_key {
+    primary_key: yes
+    sql: CONCAT(${country}, ${material},${plant},${segment},${date_time_date}) ;;
+  }
+
+
   measure: count {
     type: count
     drill_fields: []
@@ -306,6 +327,7 @@ view: dbag_sap_data {
   measure: sum_of_expenses {
     type: sum
     label: "Total Expenses"
+    #sql: ${operating_expenses} ;;
     sql: coalesce(${operating_expenses},0) ;;
     html: @{big_money_format} ;;
     drill_fields: [business_area,country,plant,time,operating_expenses]
