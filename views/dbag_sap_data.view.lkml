@@ -323,6 +323,7 @@ view: dbag_sap_data {
     label: "Net Revenue"
     sql: coalesce(${net_revenue},0) ;;
     html: @{big_money_format} ;;
+    drill_fields: [business_area,country,region,segment,net_revenue]
   }
 
   measure: sum_of_expenses {
@@ -331,7 +332,7 @@ view: dbag_sap_data {
     #sql: ${operating_expenses} ;;
     sql: coalesce(${operating_expenses},0) ;;
     html: @{big_money_format} ;;
-    drill_fields: [business_area,country,plant,time,operating_expenses]
+    drill_fields: [business_area,country,plant,operating_expenses]
   }
 
   measure: sum_of_contribution_margin {
@@ -360,7 +361,7 @@ view: dbag_sap_data {
     type: sum
     sql: ${TABLE}.EBIT;;
     html: @{big_money_format} ;;
-    drill_fields: [business_area,country,plant,time,ebit]
+    drill_fields: [business_area,country,plant,ebit]
   }
 
   measure: sum_of_net_profit {
@@ -368,7 +369,7 @@ view: dbag_sap_data {
     label: "Net Profit"
     sql: coalesce(${net_profit},0) ;;
     html: @{big_money_format} ;;
-    drill_fields: [business_area,country,plant,time,net_profit]
+    drill_fields: [business_area,country,plant,net_profit]
   }
 
   measure: sum_of_gross_profit {
@@ -383,5 +384,6 @@ view: dbag_sap_data {
     label: "Total Volume"
     sql: coalesce(${volume},0) ;;
     html: @{big_number_format} ;;
+    drill_fields: [business_area,country,region,segment,volume]
   }
 }
