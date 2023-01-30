@@ -36,11 +36,11 @@ constant: big_number_format {
   {% endif %}
 
   {% if abs_value >=1000000000 %}
-  {{pos_neg}}{{ abs_value | divided_by: 1000000000.0  }}B
+  {{pos_neg}}{{ abs_value | divided_by: 1000000000.0  | round: 2 }}B
   {% elsif abs_value >=1000000 %}
-  {{pos_neg}}{{ abs_value | divided_by: 1000000.0 }}M
+  {{pos_neg}}{{ abs_value | divided_by: 1000000.0 | round: 2 }}M
   {% elsif abs_value >=1000 %}
-  {{pos_neg}}{{ abs_value | divided_by: 1000.0 }}K
+  {{pos_neg}}{{ abs_value | divided_by: 1000.0 | round: 2 }}K
   {% else %}
   {{pos_neg}}{{ abs_value }}
   {% endif %}

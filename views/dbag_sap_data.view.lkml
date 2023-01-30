@@ -377,4 +377,11 @@ view: dbag_sap_data {
     sql: coalesce(${gross_profit},0) ;;
     html: @{big_money_format} ;;
   }
+
+  measure: sum_of_volume {
+    type: sum
+    label: "Total Volume"
+    sql: coalesce(${volume},0) ;;
+    html: @{big_number_format} ;;
+  }
 }
