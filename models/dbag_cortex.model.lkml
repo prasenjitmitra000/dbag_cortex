@@ -29,3 +29,4 @@ explore: sapdata {}
 explore: dbag_sap_data {}
 explore: dbag_bq_forcast {}
 explore: demo_whatif {}
+explore: demo_whatif_der_tbl {}
