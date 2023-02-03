@@ -28,5 +28,5 @@ persist_with: dbag_cortex_default_datagroup
 explore: sapdata {}
 explore: dbag_sap_data {}
 explore: dbag_bq_forcast {}
-explore: demo_whatif {}
+explore: dbag_demo_data {}
 explore: demo_whatif_der_tbl {}
