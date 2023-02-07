@@ -2,7 +2,7 @@
 view: dbag_sap_data {
   # The sql_table_name parameter indicates the underlying database table
   # to be used for all fields in this view.
-  sql_table_name: `mi-4-305707.dbag_usecase.dbag_sap_data`
+  sql_table_name: `mi-4-305707.dbag_usecase.monthly_sap_data_2023`
     ;;
   # No primary key is defined for this view. In order to join this view in an Explore,
   # define primary_key: yes on a dimension that has no repeated values.
@@ -256,14 +256,15 @@ view: dbag_sap_data {
     sql: ${TABLE}.Segment ;;
   }
 
-  dimension: time {
-    type: string
-    sql: ${TABLE}.Time ;;
-  }
+  #dimension: time {
+   # type: string
+   # sql: ${TABLE}.Time ;;
+  #}
 
   dimension: year_month {
     type: string
-    sql: case when ${TABLE}.Time='Jan (2019)' then '2019-01' when ${TABLE}.Time='Feb (2019)' then '2019-02' when ${TABLE}.Time='Mar (2019)' then '2019-03' end ;;
+    #sql: case when ${TABLE}.Time='Jan (2019)' then '2019-01' when ${TABLE}.Time='Feb (2019)' then '2019-02' when ${TABLE}.Time='Mar (2019)' then '2019-03' end ;;
+    sql: FORMAT_DATETIME('%Y-%m',  ${date_time_raw}) ;;
   }
 
   dimension: trade_spend {
@@ -303,7 +304,7 @@ view: dbag_sap_data {
       year
     ]
     datatype: datetime
-    sql: ${TABLE}.date_time ;;
+    sql: ${TABLE}.time ;;
   }
 
 
