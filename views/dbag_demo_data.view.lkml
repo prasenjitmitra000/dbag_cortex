@@ -3,7 +3,7 @@ view: dbag_demo_data {
     sql: SELECT
       Business_Area
       ,Geo
-      ,'2019-04-01' month
+      ,'2023-04-01' month
       ,Price
       ,NR_April_2019 nr
       ,MOM_Change_in_April_NR nr_change
@@ -12,7 +12,7 @@ view: dbag_demo_data {
       SELECT
       Business_Area
       ,Geo
-      ,'2019-05-01' month
+      ,'2023-05-01' month
       ,Price
       ,NR_May_2019 nr
       ,MOM_Change_in_May_NR nr_change
@@ -21,7 +21,7 @@ view: dbag_demo_data {
       SELECT
       Business_Area
       ,Geo
-      ,'2019-06-01' month
+      ,'2023-06-01' month
       ,Price
       ,NR_June_2019 nr
       ,MOM_Change_in_June_NR nr_change
